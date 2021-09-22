@@ -29,7 +29,7 @@ class CourseController extends AbstractController
         if ($formItem->isSubmitted()){
             $item->setDateAdd(new \DateTime('now'));
             $item->setIsBuy(false);
-            if($item->getQuantite() == null || $item->getQuantite() == 0)
+            if($item->getQuantite() == null || $item->getQuantite() <= 0)
             {
                 $item->setQuantite(1);
             }
