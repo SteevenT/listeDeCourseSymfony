@@ -1,0 +1,46 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Ma liste de course{% endblock %}
+
+{% block body %}
+<div class="container px-5">
+    <h2>Ajouter un article </h2>
+    {# <div class="row"> #}
+        {{ form_start(formItem) }} {# <form ...> #}
+
+
+        {{ form_widget(formItem) }} {# <form ...> #}
+            <button type="submit" class="btn btn-success">
+                <i class="fa fa-plus">Enregistrer</i>
+            </button>
+
+        {{ form_end(formItem) }} {# </form> #}
+    {# </div> #}
+
+    <hr>
+
+    <h2>Liste de course </h1>
+    <table class="table table-striped">
+        <thead>
+          <tr>
+              <th>Article</th>
+              <th>Quantité</th>
+              <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for item in items %}
+            <tr class="{% if item.isBuy == true %}table-danger{% endif %}">
+                <td>{{ item.name }}</td>
+                <td>{{ item.quantite }}</td>
+                <td>
+                    <a href="{{ path('edit',{id: item.id}) }}" class="btn btn-primary">Pointer</a>
+                    <a href="{{ path('delete',{id: item.id}) }}" class="btn btn-danger">Supprimer</a>
+                </td>
+            </tr>
+          {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}
+
