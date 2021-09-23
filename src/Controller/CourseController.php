@@ -52,7 +52,11 @@ class CourseController extends AbstractController
      */
     public function edit(Item $item, EntityManagerInterface $em): Response
     {
-        $item->setIsBuy(true);
+        if($item->getIsBuy() == false){
+            $item->setIsBuy(true);
+        }else{
+            $item->setIsBuy(false);
+        }
 
         $em->persist($item);
         $em->flush();
